@@ -18,14 +18,26 @@ public class GoldAppraiser implements ArtifactVisitor {
 
     @Override
     public void visit(Potion potion) {
+        int appraisal = (int)(potion.getValue() * 0.8);
+        totalValue += appraisal;
+        System.out.printf("  [GoldAppraiser] %-22s -> %4d gold  (potions depreciate ×0.8)%n",
+                potion.getName(), appraisal);
     }
 
     @Override
     public void visit(Scroll scroll) {
+        int appraisal = (int)(scroll.getValue() * 1.2);
+        totalValue += appraisal;
+        System.out.printf("  [GoldAppraiser] %-22s -> %4d gold  (scroll markup ×1.2)%n",
+                scroll.getName(), appraisal);
     }
 
     @Override
     public void visit(Ring ring) {
+        int appraisal = (int)(ring.getValue() * 2.0 + ring.getMagicBonus() * 15);
+        totalValue += appraisal;
+        System.out.printf("  [GoldAppraiser] %-22s -> %4d gold  (ring ×2.0 + magic bonus)%n",
+                ring.getName(), appraisal);
     }
 
     @Override
