@@ -6,14 +6,27 @@ public class EnchantmentScanner implements ArtifactVisitor {
 
     private int enchantedCount = 0;
 
-    public int getEnchantedCount() { return enchantedCount; }
+    public int getEnchantedCount() {
+        return enchantedCount;
+    }
 
     @Override
     public void visit(Weapon weapon) {
+        if (weapon.getAttackBonus() > 5) {
+            enchantedCount++;
+            System.out.println("  [EnchantmentScanner] " + weapon.getName()
+                    + " pulses with combat energy! ATK aura: +" + weapon.getAttackBonus());
+        } else {
+            System.out.println("  [EnchantmentScanner] " + weapon.getName()
+                    + " — mundane weapon. No enchantment detected.");
+        }
     }
 
     @Override
     public void visit(Potion potion) {
+        System.out.println("  [EnchantmentScanner] " + potion.getName()
+                + " — alchemical brew. Healing: " + potion.getHealing()
+                + ". No arcane enchantment.");
     }
 
     @Override
@@ -38,5 +51,13 @@ public class EnchantmentScanner implements ArtifactVisitor {
 
     @Override
     public void visit(Armor armor) {
+        if (armor.getDefenseBonus() > 8) {
+            enchantedCount++;
+            System.out.println("  [EnchantmentScanner] " + armor.getName()
+                    + " — WARDED ARMOR! DEF aura: +" + armor.getDefenseBonus());
+        } else {
+            System.out.println("  [EnchantmentScanner] " + armor.getName()
+                    + " — standard armor. DEF: +" + armor.getDefenseBonus());
+        }
     }
 }
