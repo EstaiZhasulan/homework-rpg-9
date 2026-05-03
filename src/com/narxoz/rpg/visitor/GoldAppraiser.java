@@ -47,5 +47,5 @@ public class GoldAppraiser implements ArtifactVisitor {
         System.out.printf("  [GoldAppraiser] %-22s -> %4d gold  (armor ×1.3 + DEF bonus)%n",
                 armor.getName(), appraisal);
     }
-
+    private int potion_base(int val, double mult) { return (int)(val * mult); }
 }
