@@ -61,4 +61,4 @@ public class CurseDetector implements ArtifactVisitor {
         System.out.println("  [CurseDetector] " + armor.getName()
                 + " — armor clean. DEF: +" + armor.getDefenseBonus());
     }
-
+}
