@@ -20,6 +20,15 @@ public class CurseDetector implements ArtifactVisitor {
 
     @Override
     public void visit(Scroll scroll) {
+        String spell = scroll.getSpellName().toLowerCase();
+        if (spell.contains("death") || spell.contains("doom") || spell.contains("curse")) {
+            cursedArtifacts.add(scroll.getName());
+            System.out.println("  [CurseDetector] *** CURSED *** " + scroll.getName()
+                    + " — dark spell: [" + scroll.getSpellName() + "]!");
+        } else {
+            System.out.println("  [CurseDetector] " + scroll.getName()
+                    + " — scroll safe. Spell: " + scroll.getSpellName());
+        }
     }
 
     @Override
