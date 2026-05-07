@@ -12,6 +12,13 @@ public class CurseDetector implements ArtifactVisitor {
 
     @Override
     public void visit(Weapon weapon) {
+        if (weapon.getAttackBonus() >= 10) {
+            cursedArtifacts.add(weapon.getName());
+            System.out.println("  [CurseDetector] *** CURSED *** " + weapon.getName()
+                    + " — ATK bonus too high (" + weapon.getAttackBonus() + "). Dark energy!");
+        } else {
+            System.out.println("  [CurseDetector] " + weapon.getName() + " — weapon safe.");
+        }
     }
 
     @Override
@@ -33,6 +40,13 @@ public class CurseDetector implements ArtifactVisitor {
 
     @Override
     public void visit(Ring ring) {
+        if (ring.getMagicBonus() >= 15) {
+            cursedArtifacts.add(ring.getName());
+            System.out.println("  [CurseDetector] *** CURSED *** " + ring.getName()
+                    + " — magic bonus dangerously high (" + ring.getMagicBonus() + ")!");
+        } else {
+            System.out.println("  [CurseDetector] " + ring.getName() + " — ring safe.");
+        }
     }
 
     @Override
