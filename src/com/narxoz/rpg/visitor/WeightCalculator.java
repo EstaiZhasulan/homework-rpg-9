@@ -17,21 +17,36 @@ public class WeightCalculator implements ArtifactVisitor {
 
     @Override
     public void visit(Weapon weapon) {
+        totalWeight += weapon.getWeight();
+        System.out.printf("  [WeightCalc] %-22s  %3d kg  (weapon — two-handed grip)%n",
+                weapon.getName(), weapon.getWeight());
     }
 
     @Override
     public void visit(Potion potion) {
+        totalWeight += potion.getWeight();
+        System.out.printf("  [WeightCalc] %-22s  %3d kg  (potion — liquid mass)%n",
+                potion.getName(), potion.getWeight());
     }
 
     @Override
     public void visit(Scroll scroll) {
+        totalWeight += scroll.getWeight();
+        System.out.printf("  [WeightCalc] %-22s  %3d kg  (scroll — parchment roll)%n",
+                scroll.getName(), scroll.getWeight());
     }
 
     @Override
     public void visit(Ring ring) {
+        totalWeight += ring.getWeight();
+        System.out.printf("  [WeightCalc] %-22s  %3d kg  (ring — negligible mass)%n",
+                ring.getName(), ring.getWeight());
     }
 
     @Override
     public void visit(Armor armor) {
+        totalWeight += armor.getWeight();
+        System.out.printf("  [WeightCalc] %-22s  %3d kg  (armor — heavy plating)%n",
+                armor.getName(), armor.getWeight());
     }
 }
