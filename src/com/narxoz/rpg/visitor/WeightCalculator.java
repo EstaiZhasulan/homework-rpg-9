@@ -9,7 +9,10 @@ public class WeightCalculator implements ArtifactVisitor {
     public int getTotalWeight() { return totalWeight; }
 
     public String getEncumbranceTier() {
-        return "Unknown";
+        if (totalWeight <= 20)  return "Light  (no penalty)";
+        if (totalWeight <= 50)  return "Medium (-5 speed)";
+        if (totalWeight <= 100) return "Heavy  (-15 speed)";
+        return "Overloaded! (-30 speed, cannot run)";
     }
 
     @Override
