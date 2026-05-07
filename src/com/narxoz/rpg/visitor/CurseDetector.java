@@ -20,9 +20,16 @@ public class CurseDetector implements ArtifactVisitor {
             System.out.println("  [CurseDetector] " + weapon.getName() + " — weapon safe.");
         }
     }
-
     @Override
     public void visit(Potion potion) {
+        if (potion.getHealing() < 0) {
+            cursedArtifacts.add(potion.getName());
+            System.out.println("  [CurseDetector] *** CURSED *** " + potion.getName()
+                    + " — negative healing! Poison potion!");
+        } else {
+            System.out.println("  [CurseDetector] " + potion.getName()
+                    + " — potion safe. Healing: " + potion.getHealing());
+        }
     }
 
     @Override
@@ -51,5 +58,7 @@ public class CurseDetector implements ArtifactVisitor {
 
     @Override
     public void visit(Armor armor) {
+        System.out.println("  [CurseDetector] " + armor.getName()
+                + " — armor clean. DEF: +" + armor.getDefenseBonus());
     }
 }
